@@ -1,0 +1,38 @@
+
+
+<div class="container">
+  <!--<div class="push-up top-equal blocks-spacer-last">-->
+    <div class="input-group mb-3">
+    <div class="row">
+
+        <hr/>
+        <section class="contact-form-container">
+          <h3 class="push-down-25">ورود</h3>
+          <form [formGroup]="loginPaymentForm" (ngSubmit)="submitPaymentLoginForm()" class="form form-inline form-contact">
+            <p class="push-down-20">
+              <label  for="basic-url" class="form-label">آدرس وب سایت<span class="red-clr bold">*</span></label>
+              <span class="input-group-text" id="basic-addon3">https://</span>
+              <input type="text" tabindex="3" class="form-control" id="basic-url" aria-describedby="basic-addon3" formControlName="AddressWebsite">
+            </p>
+            <p class="text-error"
+               *ngIf="loginPaymentForm.controls.AddressWebsite.errors?.required && loginPaymentForm.controls.AddressWebsite.touched">
+              لطفا آدرس وب سایت  خود را وارد نمایید
+            </p>
+            <p class="text-error"
+               *ngIf="loginPaymentForm.controls.email.errors?.AddressWebsite && loginPaymentForm.controls.AddressWebsite.touched">
+                 آدرس معتبرنیست
+            </p>
+            <p>
+              <button class="btn btn-primary bold" [disabled]="loginPaymentForm.invalid" type="submit" tabindex="7"
+                      id="submit">مرحله بعد
+              </button>
+            </p>
+          </form>
+        </section>
+        <hr/>
+    </div>
+  </div>
+</div>
+
+
+

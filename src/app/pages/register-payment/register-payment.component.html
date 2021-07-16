@@ -1,0 +1,114 @@
+<!--  ==========  -->
+<!--  = Breadcrumbs =  -->
+<!--  ==========  -->
+<div class="darker-stripe">
+  <div class="container">
+    <div class="row">
+      <div class="span12">
+        <ul class="breadcrumb">
+          <li>
+            <a routerLink=""> فروش گستر</a>
+          </li>
+          <li><span class="icon-chevron-right"></span></li>
+          <li>
+            <a>ثبت نام سایت </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="push-up top-equal blocks-spacer-last">
+    <div class="row">
+
+      <div class="span12">
+        <div class="title-area">
+          <h1 class="inline">ثبت نام</h1>
+        </div>
+      </div>
+      <section class="span8 single single-page">
+
+        <hr/>
+        <section class="contact-form-container">
+
+          <h3 class="push-down-25">ثبت نام سایت </h3>
+
+          <form [formGroup]="registerPaymentForm" (ngSubmit)="submitPaymentRegisterForm()" class="form form-inline form-contact">
+            <p class="push-down-20">
+              <label>نام وب سایت <span class="red-clr bold">*</span></label>
+              <input type="text" tabindex="1" class="span6" formControlName="NameWebsite">
+            </p>
+            <p class="text-danger"
+            *ngIf="registerPaymentForm.controls.NameWebsite.errors?.maxlength && registerPaymentForm.controls.NameWebsite.touched">
+              لطفا نام سایت خود را وارد نمایید
+            </p>
+            <p class="push-down-20">
+              <label>شماره همراه<span class="red-clr bold">*</span></label>
+              <input type="text" tabindex="2" class="span6" formControlName="Tell" placeholder="تلفن پشتیبانی">
+            </p>
+
+            <p class="text-danger"
+               *ngIf="registerPaymentForm.controls.Tell.errors?.required && registerPaymentForm.controls.Tell.touched">
+              لطفا تلفن پشتیبانی خود را وارد نمایید
+            </p>
+
+            <!--categories-->
+            <p class="push-down-20" *ngif="categories.lenght>0">
+
+              <label [for]="'cat_'+cat.id"  *ngFor="let cat of categories">عنوان<span class="red-clr bold">*</span>
+              <input type="dropdownList" [value]="cat.id" [id]="'cat_'+cat.id"
+              (change)="filterCategories($event)"
+               tabindex="3"
+               class="span6"
+               formControlName="Title">
+              {{cat.title}}
+            </label>
+            </p>
+
+
+            <!---categories-->
+
+            <p class="push-down-20">
+              <label>شماره حساب بانکی<span class="red-clr bold">*</span></label>
+              <input type="email" tabindex="4" class="span6" formControlName="BankAccount">
+            </p>
+            <p class="text-danger"
+               *ngIf="registerPaymentForm.controls.BankAccount.errors?.required && registerPaymentForm.controls.BankAccount.touched">
+              لطفا شماره حساب بانکی خود را وارد نمایید
+            </p>
+            <p class="text-danger"
+               *ngIf="registerPaymentForm.controls.BankAccount.errors?.BankAccount && registerPaymentForm.controls.BankAccount.touched">
+               شماره حساب معتبر نیست
+            </p>
+
+            <p class="push-down-20">
+              <label>آدرس سایت <span class="red-clr bold">*</span></label>
+              <input type="password" tabindex="5" class="span6" formControlName="AddressWebsite">
+            </p>
+
+            <p class="text-danger"
+               *ngIf="registerPaymentForm.controls.AddressWebsite.errors?.required && registerPaymentForm.controls.AddressWebsite.touched">
+              لطفاآدرس وب سایت  خود را وارد نمایید
+            </p>
+
+            <p class="text-danger"
+               *ngIf="registerPaymentForm.controls.AddressWebsite.errors?.maxlength && registerPaymentForm.controls.AddressWebsite.touched">
+              تعداد کاراکترها نمیتواند بیشتر از 100 باشد
+            </p>
+
+            <p>
+              <button class="btn btn-primary bold" [disabled]="registerPaymentForm.invalid" type="submit" tabindex="5"
+                      id="submit">ثبت نام سایت
+              </button>
+            </p>
+          </form>
+        </section>
+        <hr/>
+      </section>
+    </div>
+  </div>
+</div>
+
+
